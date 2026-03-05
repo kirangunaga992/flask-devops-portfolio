@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard | Rohan</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #0f172a; color: white; text-align: center; padding: 50px; }
+        .chart-container { width: 400px; margin: auto; background: #1e293b; padding: 20px; border-radius: 15px; border: 1px solid #00ff88; }
+        .back-btn { margin-top: 20px; display: inline-block; color: #00ff88; text-decoration: none; border: 1px solid #00ff88; padding: 10px 20px; border-radius: 5px; }
+        .back-btn:hover { background: #00ff88; color: black; }
+    </style>
+</head>
+<body>
+    <h1>Welcome, Admin</h1>
+    <p>System Analysis: Tech Stack Distribution</p>
+
+    <div class="chart-container">
+        <canvas id="skillsChart"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('skillsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['DevOps', 'Frontend', 'Backend', 'Cybersecurity'],
+                datasets: [{
+                    data: [35, 20, 25, 20],
+                    backgroundColor: ['#00ff88', '#3b82f6', '#f59e0b', '#ef4444'],
+                    hoverOffset: 20 // This makes it "pop" when you hover!
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { labels: { color: 'white' } }
+                }
+            }
+        });
+    </script>
+
+    <br>
+    <a href="/" class="back-btn">Logout & Return Home</a>
+</body>
+</html>
