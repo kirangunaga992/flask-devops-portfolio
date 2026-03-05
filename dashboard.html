@@ -1,44 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Admin Dashboard | Rohan</title>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard | Rohan Gunaga</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body { font-family: 'Inter', sans-serif; background: #0f172a; color: white; text-align: center; padding: 50px; }
-        .chart-container { width: 400px; margin: auto; background: #1e293b; padding: 20px; border-radius: 15px; border: 1px solid #00ff88; }
-        .back-btn { margin-top: 20px; display: inline-block; color: #00ff88; text-decoration: none; border: 1px solid #00ff88; padding: 10px 20px; border-radius: 5px; }
-        .back-btn:hover { background: #00ff88; color: black; }
+        :root { --primary: #00ff88; --bg: #0f172a; --card: #1e293b; --text: #f8fafc; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); display: flex; flex-direction: column; align-items: center; padding: 50px; }
+        .chart-box { background: var(--card); padding: 30px; border-radius: 20px; border: 1px solid var(--primary); box-shadow: 0 0 20px rgba(0, 255, 136, 0.2); transition: transform 0.3s; }
+        .chart-box:hover { transform: scale(1.02); }
+        h1 { color: var(--primary); margin-bottom: 30px; }
+        .logout { margin-top: 30px; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--primary); }
     </style>
 </head>
 <body>
-    <h1>Welcome, Admin</h1>
-    <p>System Analysis: Tech Stack Distribution</p>
-
-    <div class="chart-container">
-        <canvas id="skillsChart"></canvas>
+    <h1>System Analysis Dashboard</h1>
+    
+    <div class="chart-box">
+        <canvas id="skillsChart" width="400" height="400"></canvas>
     </div>
+
+    <a href="/" class="logout">← Back to Portfolio</a>
 
     <script>
         const ctx = document.getElementById('skillsChart').getContext('2d');
-        new Chart(ctx, {
+        const skillsChart = new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: ['DevOps', 'Frontend', 'Backend', 'Cybersecurity'],
+                labels: ['DevOps', 'Cybersecurity', 'Backend', 'Frontend'],
                 datasets: [{
-                    data: [35, 20, 25, 20],
+                    label: 'Skill Distribution',
+                    data: [40, 30, 20, 10], // Percentages
                     backgroundColor: ['#00ff88', '#3b82f6', '#f59e0b', '#ef4444'],
-                    hoverOffset: 20 // This makes it "pop" when you hover!
+                    borderColor: '#1e293b',
+                    borderWidth: 2,
+                    hoverOffset: 30 // This makes the slice "pop" on hover
                 }]
             },
             options: {
                 plugins: {
-                    legend: { labels: { color: 'white' } }
+                    legend: { labels: { color: 'white', font: { size: 14 } } }
                 }
             }
         });
     </script>
-
-    <br>
-    <a href="/" class="back-btn">Logout & Return Home</a>
 </body>
 </html>
